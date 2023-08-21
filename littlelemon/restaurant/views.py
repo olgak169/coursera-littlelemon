@@ -11,7 +11,7 @@ from .serializers import MenuSerializer, BookingSerializer
 
 # Create your views here.
 def index(request):
-    return render(request, 'home.html', {})
+    return render(request, 'index.html', {})
 
 class BookingView(APIView):
 
@@ -31,6 +31,7 @@ class BookingView(APIView):
                 })
 
 class BookingViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
     serializer_class = BookingSerializer
     queryset = Booking.objects.all()
 
